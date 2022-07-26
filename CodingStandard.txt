@@ -1,0 +1,37 @@
+MSD P22385
+Coding Standard
+Created by: Harrison Barnes
+
+NAMING CONVENTIONS
+  Variables: variableNameLikeThis
+    -Name must be descriptive
+    -Commonly used index vars (i,j,k) are acceptable in for loops
+    -Arrays should indicate multiples, ie) cars[] not car[]
+
+  Functions: FunctionNameLikeThis
+    -Name must be descriptive
+    -Use VerbNoun titles
+
+  Constants : constant_names_like_this
+    -Must be all caps
+    -Hard coded numbers MUST have a header file variable
+
+COMMENTS
+  -Comments must describe a purpose: # Search array for customer value NOT //Seach array
+  -Comments should not describe code exactly: a=b+c # Add b and c into a <---bad!!!
+  -Use # for single line comments
+  -Functions, loops, structs, etc. MUST have a header above them explaining the block
+    -Functions should describe purpose, parameters, outputs, post and pre conditions if applicable
+
+HEADER BLOCK
+  -Each file must contain a header block using """ """ comments
+  -Header blocks must follow the below format
+
+    """
+    MSD P22835
+    Themed Entertainment Model Display
+    File    : filename.filetype
+    Author  : Author name
+    Data    : Date of Creation in MM/DD/YYYY
+    Purpose : Describe purpose here
+    """
