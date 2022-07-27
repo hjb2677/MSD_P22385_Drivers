@@ -1,7 +1,7 @@
 """
 MSD P22385
 Themed Entertainment Model Display
-File    : Scheduler.h
+File    : Scheduler.py
 Author  : Harrison Barnes
 Date    : 04/05/2022
 Purpose : Contains defines for the scheduling of the display

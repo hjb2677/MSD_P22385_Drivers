@@ -1,7 +1,7 @@
 """
 MSD P22385
 Themed Entertainment Model Display
-File    : Scheduler.c
+File    : Scheduler.py
 Author  : Harrison Barnes
 Date    : 05/03/2022
 Purpose : Driver program for the scheduler
