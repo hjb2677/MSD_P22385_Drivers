@@ -11,6 +11,6 @@ Purpose : Driver program for the Error Reporting system
 import ErrorCodes
 import ErrorReport
 
-def HallMonitorDriver():
+def ErrorReporterDriver():
     return ErrorReport.ERROR_REPORTER_CONTINUE_DRIVER
 

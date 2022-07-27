@@ -11,6 +11,9 @@ Purpose : Driver program for the entire display
 import time
 
 # Imports - Files
+import Activator
+import ErrorReporter
+import HallMonitor
 import Schedule
 import Scheduler
 import Idle
@@ -102,17 +105,17 @@ def main():
             # =============================================
             #                   Activator
             # =============================================
-            pass
+            returnCode = Activator.ActivatorDriver()
         elif controlCode == DriverFlowCodes.DRIVER_ENTRY_HALL_MONITOR:
             # =============================================
             #                 Hall Monitor
             # =============================================
-            pass
+            returnCode = HallMonitor.HallMonitorDriver()
         elif controlCode == DriverFlowCodes.DRIVER_ENTRY_ERROR_REPORTER:
             # =============================================
             #                Error Reporter
             # =============================================
-            pass
+            returnCode = ErrorReporter.ErrorReporterDriver()
         elif controlCode == DriverFlowCodes.DRIVER_EXIT_NORMAL:
             # =============================================
             #             NOMINAL EXIT HANDLING
