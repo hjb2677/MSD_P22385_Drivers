@@ -94,7 +94,7 @@ def ValidateTime(timeOfDay, todaysDate):
     currentYear = todaysDate.year
 
     # Extract Hour, Minute, Second for evaluation
-    currentMin = timeOfDay.min
+    currentMin = timeOfDay.minute
     currentHour = timeOfDay.hour
 
     # Validate day of week (DOW)
