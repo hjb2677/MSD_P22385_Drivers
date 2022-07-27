@@ -1,10 +1,11 @@
-# MSD P22385
-# Themed Entertainment Model Display
-# File    : Scheduler.h
-# Author  : Harrison Barnes
-# Date    : 04/05/2022
-# Purpose : Contains defines for the scheduling of the display
-
+"""
+MSD P22385
+Themed Entertainment Model Display
+File    : Scheduler.h
+Author  : Harrison Barnes
+Date    : 04/05/2022
+Purpose : Contains defines for the scheduling of the display
+"""
 
 # Invalid Days - days of the week (0 = mon, 6 = sun) where the ride will not run
 # Set as : saturday & sunday

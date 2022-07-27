@@ -1,22 +1,24 @@
-# MSD P22385
-# Themed Entertainment Model Display
-# File    : Scheduler.c
-# Author  : Harrison Barnes
-# Date    : 05/03/2022
-# Purpose : Driver program for the scheduler
-
+"""
+MSD P22385
+Themed Entertainment Model Display
+File    : Scheduler.c
+Author  : Harrison Barnes
+Date    : 05/03/2022
+Purpose : Driver program for the scheduler
+"""
 
 # Includes
 import datetime
 import Schedule
 
+"""
+Function : SchedulerDriver
+Inputs   : None
+Outputs  : integer code denoting state of schedule
 
-# Function : SchedulerDriver
-# Inputs   : None
-# Outputs  : integer code denoting state of schedule
-#
-# Fetches time, validates the time within the schedule, and returns
-# a proper validation code.
+Fetches time, validates the time within the schedule, and returns
+a proper validation code.
+"""
 def SchedulerDriver():
     # Fetch time and date for the current time
     timeOfDay = FetchTime()
@@ -26,52 +28,64 @@ def SchedulerDriver():
     return ValidateTime(timeOfDay, todaysDate)
 
 
-# Function : FetchTime
-# Inputs   : none
-# Outputs  : Current time of day
+"""
+Function : FetchTime
+Inputs   : none
+Outputs  : Current time of day
+"""
 def FetchTime():
     return datetime.datetime.now().time()
 
 
-# Function : FetchDate
-# Inputs   : none
-# Outputs  : Current date
+"""
+Function : FetchDate
+Inputs   : none
+Outputs  : Current date
+"""
 def FetchDate():
     return datetime.date.today()
 
 
-# Function : ConvertDayOfWeek
-# Inputs   : dateObj -  a datetime date object
-# Outputs  : Day of week (0 = mon, 6 = sun)
+"""
+Function : ConvertDayOfWeek
+Inputs   : dateObj -  a datetime date object
+Outputs  : Day of week (0 = mon, 6 = sun)
+"""
 def ConvertDayOfWeek(dateObj):
     return datetime.date.weekday(dateObj)
 
 
-# Function : PrintTimeOfDay
-# Inputs   : none
-# Outputs  : none
-#
-# Prints time of day
+"""
+Function : PrintTimeOfDay
+Inputs   : none
+Outputs  : none
+
+#rints time of day
+"""
 def PrintTimeOfDay():
     print(FetchTime())
 
 
-# Function : PrintDate
-# Inputs   : none
-# Outputs  : none
-#
-# Prints current date
+"""
+Function : PrintDate
+Inputs   : none
+Outputs  : none
+
+Prints current date
+"""
 def PrintDate():
     print(FetchDate())
 
 
-# Function : ValidateTime
-# Inputs   : timeOfDay - current time of day
-# Outputs  : return code based on validity of time within the ride schedule
-#
-# Checks if the given time lies within the user-defined schedule. Returns accordingly
-# Specifically checks if date is valid. If valid, checks if day of week is valid.
-# If valid, continue to check the time
+"""
+Function : ValidateTime
+Inputs   : timeOfDay - current time of day
+Outputs  : return code based on validity of time within the ride schedule
+
+Checks if the given time lies within the user-defined schedule. Returns accordingly
+Specifically checks if date is valid. If valid, checks if day of week is valid.
+If valid, continue to check the time
+"""
 def ValidateTime(timeOfDay, todaysDate):
     # Extract Day, Month, Year for evaluation
     currentDay = todaysDate.day

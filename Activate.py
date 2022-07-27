@@ -12,3 +12,4 @@ ACTIVATOR_LAUNCH_COMPLETED = 3740
 
 # Launch Incomplete - Launch failed to start for some reason
 ACTIVATOR_LAUNCH_FAILED = 3741
+

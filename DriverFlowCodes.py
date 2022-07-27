@@ -1,10 +1,11 @@
-# MSD P22385
-# Themed Entertainment Model Display
-# File    : DriverFlowCodes.py
-# Author  : Harrison Barnes
-# Date    : 07/11/2022
-# Purpose : Contains control codes to switch between which driver section should run
-
+"""
+MSD P22385
+Themed Entertainment Model Display
+File    : DriverFlowCodes.py
+Author  : Harrison Barnes
+Date    : 07/11/2022
+Purpose : Contains control codes to switch between which driver section should run
+"""
 
 # Scheduler entry code
 DRIVER_ENTRY_SCHEDULER = 1000
