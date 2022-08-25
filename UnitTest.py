@@ -90,7 +90,8 @@ def testScheduler():
                   datetime.date.fromisoformat("2022-08-20"),    # Invalid date, valid time
                   datetime.date.fromisoformat("2023-08-21"),    # Invalid date, invalid time
                   datetime.date.fromisoformat("2024-02-29"),    # Leap date, valid time
-                  datetime.date.fromisoformat("2024-02-29")]    # Leap date, invalid time
+                  datetime.date.fromisoformat("2024-02-29"),    # Leap date, invalid time
+                  datetime.date.fromisoformat("2000-01-01")]    # Invalid date
 
     test_times = [datetime.time.fromisoformat("12:00:00"),      # Valid date, valid time
                   datetime.time.fromisoformat("00:00:00"),      # Valid date, invalid hour
@@ -98,10 +99,11 @@ def testScheduler():
                   datetime.time.fromisoformat("12:00:00"),      # Invalid date, valid time
                   datetime.time.fromisoformat("03:00:00"),      # Invalid date, invalid time
                   datetime.time.fromisoformat("12:00:00"),      # Leap date, valid time
-                  datetime.time.fromisoformat("04:00:00")]      # Leap date, invalid hour
+                  datetime.time.fromisoformat("04:00:00"),      # Leap date, invalid hour
+                  datetime.time.fromisoformat("09:00:00")]      # Invalid date
 
     # Initialize validation answer array - holds the expected validation values
-    test_validation = [0, -2, -1, -3, -2, 0, -2]
+    test_validation = [0, -2, -1, -3, -2, 0, -2, -4]
 
     # Loop through all test cases and assert validation status
     for index in range(len(test_validation)):

@@ -90,6 +90,7 @@ def ValidateTime(timeOfDay, todaysDate):
     # Extract Day, Month, Year for evaluation
     currentDay = todaysDate.day
     currentDOW = ConvertDayOfWeek(todaysDate)
+    currentDate = datetime.date.isoformat(todaysDate)
     currentMonth = todaysDate.month
     currentYear = todaysDate.year
 
@@ -97,9 +98,14 @@ def ValidateTime(timeOfDay, todaysDate):
     currentMin = timeOfDay.minute
     currentHour = timeOfDay.hour
 
+    # Validate date
+    for date in Schedule.INVALID_DATE_ARRAY:
+        if currentDate == date:  # If date is invalid, return invalid code
+            return Schedule.INVALID_DATE
+
     # Validate day of week (DOW)
-    for day in Schedule.INVALID_DATES_ARRAY:
-        if currentDOW == day: # If DOW is invalid, return invalid code
+    for day in Schedule.INVALID_DOW_ARRAY:
+        if currentDOW == day:  # If DOW is invalid, return invalid code
             return Schedule.INVALID_DOW
 
     # Validate time of day (TOD)

@@ -7,9 +7,13 @@ Date    : 04/05/2022
 Purpose : Contains defines for the scheduling of the display
 """
 
-# Invalid Days - days of the week (0 = mon, 6 = sun) where the ride will not run
+# Invalid DOWs - days of the week (0 = mon, 6 = sun) where the ride will not run
 # Set as : saturday & sunday
-INVALID_DATES_ARRAY = [5, 6]
+INVALID_DOW_ARRAY = [5, 6]
+
+# Invalid Dates - IPC formatted dates "YYYY-MM-DD" that the display will not run for. This overrides all other functions
+# January 1st, 2000 is shown as an example.
+INVALID_DATE_ARRAY = ["2000-01-01"]
 
 # Open and Close times:
 # minutes (0-59)
