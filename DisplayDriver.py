@@ -66,11 +66,8 @@ def main():
 
             # Send driver to correct control block based on validity of current time
             if returnCode == Schedule.VALID_RUN_TIME:
-                # Time is valid, begin the ride without waiting for user input
+                # Time is valid, begin the ride
                 controlCode = DriverFlowCodes.DRIVER_ENTRY_ACTIVATOR
-            elif returnCode == Schedule.VALID_TIME:
-                # Time is valid, wait for user input to begin ride
-                controlCode = DriverFlowCodes.DRIVER_ENTRY_IDLER
             elif returnCode == Schedule.INVALID_MINUTE or returnCode == Schedule.INVALID_HOUR \
                     or returnCode == Schedule.INVALID_DOW or returnCode == Schedule.INVALID_DATE:
                 # Invalid time occurred within Scheduler control block, wait before polling timestamp again

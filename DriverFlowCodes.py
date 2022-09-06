@@ -10,9 +10,6 @@ Purpose : Contains control codes to switch between which driver section should r
 # Scheduler entry code
 DRIVER_ENTRY_SCHEDULER = 1000
 
-# Idler entry code
-DRIVER_ENTRY_IDLER = 2000
-
 # Activator entry code
 DRIVER_ENTRY_ACTIVATOR = 3000
 
