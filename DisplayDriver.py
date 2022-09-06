@@ -16,8 +16,6 @@ import ErrorReporter
 import HallMonitor
 import Schedule
 import Scheduler
-import Idle
-import Idler
 import DriverFlowCodes
 import ErrorCodes
 
@@ -80,26 +78,6 @@ def main():
                 controlCode = DriverFlowCodes.DRIVER_ENTRY_SCHEDULER
             else:
                 # Error detected within Scheduler control block
-                controlCode = DriverFlowCodes.DRIVER_ENTRY_ERROR_REPORTER
-        elif controlCode == DriverFlowCodes.DRIVER_ENTRY_IDLER:
-            # =============================================
-            #                     Idler
-            # =============================================
-
-            # returnCode stores the Idler code, which holds the results of the
-            # Idler polling, either IO detected, time out, or error
-            returnCode = Idler.IdlerDriver()
-
-            # Send driver to correct control block based on Idler status
-            if returnCode == Idle.IDLER_GPIO_IO_DETECTED:
-                # User IO detected, send to Activator to begin ride sequence
-                controlCode = DriverFlowCodes.DRIVER_ENTRY_ACTIVATOR
-            elif returnCode == Idle.IDLER_TIME_OUT_DETECTED:
-                # User IO not detected, Idler timed out. Return to scheduler
-                # to re-validate time
-                controlCode = DriverFlowCodes.DRIVER_ENTRY_SCHEDULER
-            else:
-                # Error detected within Idler control block
                 controlCode = DriverFlowCodes.DRIVER_ENTRY_ERROR_REPORTER
         elif controlCode == DriverFlowCodes.DRIVER_ENTRY_ACTIVATOR:
             # =============================================
