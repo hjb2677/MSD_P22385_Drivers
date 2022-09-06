@@ -87,14 +87,16 @@ Specifically checks if date is valid. If valid, checks if day of week is valid.
 If valid, continue to check the time
 """
 def ValidateTime(timeOfDay, todaysDate):
-    # Extract Day, Month, Year for evaluation
-    currentDay = todaysDate.day
-    currentDOW = ConvertDayOfWeek(todaysDate)
+    # Extract day of week and current week and year using ISO calendar format
+    currentDOW = todaysDate.isocalendar()[2]
+    currentWeek = todaysDate.isocalendar()[1]
+    currentYear = todaysDate.isocalendar()[0]
+
+    # Extract current date (ISO format) and month
     currentDate = datetime.date.isoformat(todaysDate)
     currentMonth = todaysDate.month
-    currentYear = todaysDate.year
 
-    # Extract Hour, Minute, Second for evaluation
+    # Extract hour and minute for evaluation
     currentMin = timeOfDay.minute
     currentHour = timeOfDay.hour
 
@@ -107,6 +109,18 @@ def ValidateTime(timeOfDay, todaysDate):
     for day in Schedule.INVALID_DOW_ARRAY:
         if currentDOW == day:  # If DOW is invalid, return invalid code
             return Schedule.INVALID_DOW
+
+    # Validate week number
+    for weekYearTuple in Schedule.INVALID_WEEK_ARRAY:
+        # If week is invalid, return invalid code
+        # Checks year too for insurance that the week is correct
+        if currentYear == weekYearTuple[0] and currentWeek == weekYearTuple[1]:
+            return Schedule.INVALID_WEEK
+
+    # Validate month number
+    for month in Schedule.INVALID_MONTH_ARRAY:
+        if currentMonth == month:  # If month is invalid, return invalid code
+            return Schedule.INVALID_MONTH
 
     # Validate time of day (TOD)
     if Schedule.OPEN_HR < currentHour < Schedule.CLOSE_HR:
