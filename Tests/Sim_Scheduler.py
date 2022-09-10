@@ -23,7 +23,16 @@ Outputs  : none
 Simulates a period of time and checks scheduler. Prints validation code to a text file
 """
 def mainSimSchedule():
-    pass
+    # Open the simulation results file in write mode to prepare for sim output
+    sim_file = open("Sim_Scheduler_Results.txt", "w")
+
+    # Write a header to the output file
+    headerLines = ["Sim_Scheduler.py Output File\n", "By: Harrison Barnes\n",
+                   "Prints validation code based on the date. Listed by month\n\n"]
+    sim_file.writelines(headerLines)
+
+    # Close file. This ends write mode and frees device memory. DO NOT REMOVE
+    sim_file.close()
 
 
 if __name__ == '__main__':
