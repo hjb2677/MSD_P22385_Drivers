@@ -78,6 +78,17 @@ def PrintDate():
 
 
 """
+Function : GetTimestamp
+Inputs   : none
+Outputs  : timestamp - a string representation of the current time & date
+
+Fetches time and dates, creates a string timestamp, and returns it
+"""
+def GetTimestamp():
+    return FetchTime().isoformat() + FetchDate().strftime(" %y-%m-%d\n")
+
+
+"""
 Function : ValidateTime
 Inputs   : timeOfDay - current time of day
 Outputs  : return code based on validity of time within the ride schedule
