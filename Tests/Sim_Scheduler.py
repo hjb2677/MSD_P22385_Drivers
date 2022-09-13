@@ -12,7 +12,6 @@ All times are set to noon
 
 # Imports
 import Scheduler
-import Schedule
 import datetime
 
 # Defines
