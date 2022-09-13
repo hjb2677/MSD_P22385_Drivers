@@ -14,8 +14,12 @@ ERROR_REPORTER_CONTINUE_DRIVER = 6400
 EMAIL_REPORTER_TEST_ERROR = 6666
 
 # Origin Address - the display's email addressed used to report the errors to the client
-EMAIL_ORIGIN_ADDRESS = "DisplayErrorReporterP22385@gmail.com"
+EMAIL_ORIGIN_ADDRESS = ""
+
+# Origin Address App Password - the gmail app password for the origin address, allows the driver to authenticate
+# gmail login
+APP_PASSWORD = ""
 
 # Destination Address - the address which is supposed to receive the errors. this will be the client's email
-EMAIL_DRIVER_ADDRESS = ""
+EMAIL_DESTINATION_ADDRESS = ""
 
