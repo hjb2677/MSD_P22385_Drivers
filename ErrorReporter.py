@@ -10,6 +10,7 @@ Purpose : Driver program for the Error Reporting system
 # Includes
 import ErrorCodes
 import ErrorReport
+import Scheduler
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -17,7 +18,8 @@ from email.mime.text import MIMEText
 
 def ErrorReporterDriver():
     errorCode = ErrorReport.EMAIL_REPORTER_TEST_ERROR
-    EmailErrorToClient(errorCode)
+    timestamp = Scheduler.GetTimestamp()
+    EmailErrorToClient(errorCode, timestamp)
     return ErrorReport.ERROR_REPORTER_CONTINUE_DRIVER
 
 
@@ -29,7 +31,7 @@ Outputs  : none
 Sends a formatted error notification email to the client. accompanied with other potentially
 useful information
 """
-def EmailErrorToClient(errorCode):
+def EmailErrorToClient(errorCode, timestamp):
     # Obtain display email address and gmail app password for authentication
     smtp_user = ErrorReport.EMAIL_ORIGIN_ADDRESS
     smtp_password = ErrorReport.APP_PASSWORD
@@ -40,13 +42,13 @@ def EmailErrorToClient(errorCode):
 
     # Fill out message parts. Subject, From, To, and MSG
     msg = MIMEMultipart("alternative")
-    msg["Subject"] = "Error Occurred - CODE : " + str(errorCode)
+    msg["Subject"] = "Error Occurred - CODE : " + str(errorCode) + " at " + timestamp
     msg["From"] = smtp_user
     msg["To"] = ErrorReport.EMAIL_DESTINATION_ADDRESS
 
     # Actual message goes here
     msg.attach(MIMEText("\nThe Raspberry Pi in the TPE Display has detected an error." +
-                        "\nERROR CODE - " + str(errorCode) +
+                        "\nERROR CODE - " + str(errorCode) + " at " + timestamp +
                         "\nRefer to reference manual for causes, debugging, etc.", "plain"))
 
     # Initialize smtp server
