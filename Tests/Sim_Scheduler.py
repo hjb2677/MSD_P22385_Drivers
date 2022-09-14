@@ -44,11 +44,14 @@ def mainSimSchedule():
     # Print start message to terminal
     print("Beginning sim")
 
+    print("KEY:\n\t0 = Valid\n\t-3 = DOW\n\t-4 = DATE\n\t-5 = WEEK\n\t-6 = MONTH\n")
+
     # Open the simulation results file in write mode to prepare for sim output
     sim_file = open("Sim_Scheduler_Results.txt", "w")
 
     # Write a header to the output file
     headerLines = ["Sim_Scheduler.py Output File\n", "By: Harrison Barnes\n",
+                   "KEY:\n\t0 = Valid\n\t-3 = DOW\n\t-4 = DATE\n\t-5 = WEEK\n\t-6 = MONTH\n",
                    "Prints validation code based on the date. Listed by month\n\n"]
     sim_file.writelines(headerLines)
 
@@ -82,7 +85,7 @@ def mainSimSchedule():
                                         DowToStr(datetime.date(year, month, day)),
                                         " = ",
                                         str(Scheduler.ValidateTime(datetime.time.fromisoformat(TEST_TIME_SIM),
-                                                                    datetime.date(year, month, day))), "\n"])
+                                        datetime.date(year, month, day))), "\n"])
                     sim_file.write("\n")
 
     # Close file. This ends write mode and frees device memory. DO NOT REMOVE
