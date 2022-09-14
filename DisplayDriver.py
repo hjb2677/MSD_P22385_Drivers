@@ -19,7 +19,14 @@ import Scheduler
 import DriverFlowCodes
 import ErrorCodes
 
+"""
+Function : main
+Inputs   : none
+Outputs  : none
 
+The main driver routine of the ride system. Performs a POST, then follows the program
+control flow based on the results of various subroutines.
+"""
 def main():
     # =============================================
     #                   Initialization
@@ -155,5 +162,8 @@ def main():
     Scheduler.PrintDate()
 
 
+"""
+This section is required for the program to enter the main subroutine.
+"""
 if __name__ == "__main__":
     main()
