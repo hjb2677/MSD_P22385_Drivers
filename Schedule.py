@@ -14,8 +14,8 @@ CRITICAL NOTE - CHECK ISO FORMAT BEFORE ADJUSTING
 INVALID_DOW_ARRAY = [6, 7]
 
 # Invalid Dates - ISO formatted dates "YYYY-MM-DD" that the display will not run for. This overrides all other functions
-# January 1st, 2000 is shown as an example, along with 2023 labor day
-INVALID_DATE_ARRAY = ["2000-01-01", "2023-09-04"]
+# January 1st, 2000 is shown as an example, along with 2023 labor day, Christmas's, and New Years
+INVALID_DATE_ARRAY = ["2000-01-01", "2023-09-04", "2023-12-25", "2024-12-25", "2023-01-01", "2024-01-01", "2025-01-01"]
 
 # Invalid Weeks - Datetime library week numbers that the ride is not supposed to run during
 # Stored as 1-52 or 53 for the 52/53 weeks a year, along with their respective year.
