@@ -25,7 +25,8 @@ INVALID_DATE_ARRAY = ["2000-01-01", "2023-09-04", "2023-12-25", "2024-12-25", "2
 INVALID_WEEK_ARRAY = [(2010, 1), (2010, 2), (2023, 11), (2024, 11)]
 
 # Invalid Months - Datetime library month numbers that the ride is not supposed to run during
-INVALID_MONTH_ARRAY = []
+# Set to OFF during June & July
+INVALID_MONTH_ARRAY = [6, 7]
 
 # Open and Close times:
 # minutes (0-59)
