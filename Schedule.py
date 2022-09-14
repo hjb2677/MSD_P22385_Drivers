@@ -21,7 +21,8 @@ INVALID_DATE_ARRAY = ["2000-01-01", "2023-09-04", "2023-12-25", "2024-12-25", "2
 # Stored as 1-52 or 53 for the 52/53 weeks a year, along with their respective year.
 # See documentation for ISO format
 # The first and second weeks of 2010 is stored as an example
-INVALID_WEEK_ARRAY = [(2010, 1), (2010, 2)]
+# Spring break 2023 and 2024 are included
+INVALID_WEEK_ARRAY = [(2010, 1), (2010, 2), (2023, 10), (2024, 11)]
 
 # Invalid Months - Datetime library month numbers that the ride is not supposed to run during
 INVALID_MONTH_ARRAY = []
