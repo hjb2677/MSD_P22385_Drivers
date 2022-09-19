@@ -17,6 +17,12 @@ INVALID_DOW_ARRAY = [6, 7]
 # January 1st, 2000 is shown as an example, along with 2023 labor day, Christmas's, and New Years
 INVALID_DATE_ARRAY = ["2000-01-01", "2023-09-04", "2023-12-25", "2024-12-25", "2023-01-01", "2024-01-01", "2025-01-01"]
 
+# Valid Override Dates - ISO formatted dates "YYYY-MM-DD" that the display will run for regardless of the month,
+# date, DOW, etc. Overrides all date-based checks. Useful for things like Imagine RIT or events that fall on invalid
+# DOWs or months
+# 2023 Imagine RIT dates are added for example
+VALID_OVERRIDE_DATE_ARRAY = ["2023-04-23"]
+
 # Invalid Weeks - Datetime library week numbers that the ride is not supposed to run during
 # Stored as 1-52 or 53 for the 52/53 weeks a year, along with their respective year.
 # See documentation for ISO format

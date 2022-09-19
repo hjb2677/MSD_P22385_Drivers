@@ -1,5 +1,11 @@
 Sim_Scheduler.py Output File
 By: Harrison Barnes
+KEY:
+	0 = Valid
+	-3 = DOW
+	-4 = DATE
+	-5 = WEEK
+	-6 = MONTH
 Prints validation code based on the date. Listed by month
 
 
@@ -237,7 +243,7 @@ April
 
 23-04-22: SAT = -3
 
-23-04-23: SUN = -3
+23-04-23: SUN = 0
 
 23-04-24: MON = 0
 

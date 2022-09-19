@@ -111,27 +111,36 @@ def ValidateTime(timeOfDay, todaysDate):
     currentMin = timeOfDay.minute
     currentHour = timeOfDay.hour
 
-    # Validate date
-    for date in Schedule.INVALID_DATE_ARRAY:
-        if currentDate == date:  # If date is invalid, return invalid code
-            return Schedule.INVALID_DATE
+    # If the current day is set as a valid override, all other date-based invalidate checks are skipped.
+    # Useful for things like Imagine RIT that fall on weekends, without having to remove the weekend restriction
+    validOverrideFlag = False
+    for overrideDate in Schedule.VALID_OVERRIDE_DATE_ARRAY:
+        if currentDate == overrideDate:  # Override date detected, set flag high to skip date validation
+            validOverrideFlag = True
 
-    # Validate day of week (DOW)
-    for day in Schedule.INVALID_DOW_ARRAY:
-        if currentDOW == day:  # If DOW is invalid, return invalid code
-            return Schedule.INVALID_DOW
+    # Validate the date ONLY if the current date is not an override date
+    if not validOverrideFlag:
+        # Validate date
+        for date in Schedule.INVALID_DATE_ARRAY:
+            if currentDate == date:  # If date is invalid, return invalid code
+                return Schedule.INVALID_DATE
 
-    # Validate week number
-    for weekYearTuple in Schedule.INVALID_WEEK_ARRAY:
-        # If week is invalid, return invalid code
-        # Checks year too for insurance that the week is correct
-        if currentYear == weekYearTuple[0] and currentWeek == weekYearTuple[1]:
-            return Schedule.INVALID_WEEK
+        # Validate day of week (DOW)
+        for day in Schedule.INVALID_DOW_ARRAY:
+            if currentDOW == day:  # If DOW is invalid, return invalid code
+                return Schedule.INVALID_DOW
 
-    # Validate month number
-    for month in Schedule.INVALID_MONTH_ARRAY:
-        if currentMonth == month:  # If month is invalid, return invalid code
-            return Schedule.INVALID_MONTH
+        # Validate week number
+        for weekYearTuple in Schedule.INVALID_WEEK_ARRAY:
+            # If week is invalid, return invalid code
+            # Checks year too for insurance that the week is correct
+            if currentYear == weekYearTuple[0] and currentWeek == weekYearTuple[1]:
+                return Schedule.INVALID_WEEK
+
+        # Validate month number
+        for month in Schedule.INVALID_MONTH_ARRAY:
+            if currentMonth == month:  # If month is invalid, return invalid code
+                return Schedule.INVALID_MONTH
 
     # Validate time of day (TOD)
     if Schedule.OPEN_HR < currentHour < Schedule.CLOSE_HR:
