@@ -31,10 +31,10 @@ INVALID_MONTH_ARRAY = []
 # Open and Close times:
 # minutes (0-59)
 # hours (0-23)
-OPEN_HR = 7
-OPEN_MN = 30
-CLOSE_HR = 20
-CLOSE_MN = 30
+OPEN_HR = 0
+OPEN_MN = 0
+CLOSE_HR = 0
+CLOSE_MN = 0
 
 # Fetch Period - time (s) between fetching timestamp in Scheduler
 #      Currently set to 5 min = 300 s

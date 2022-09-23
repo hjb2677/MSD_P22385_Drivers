@@ -239,5 +239,23 @@ def InitializeSchedule(simcode=False):
     # Close csv file to free up memory
     csvFile.close()
 
+    # Read Daily_Schedule.csv into open and close time
+    with open(csvPath + "Daily_Schedule.csv", newline="") as csvFile:  # Open csv file with daily open and close times
+        # Initialize the reader and skip column header line (first line)
+        reader = csv.reader(csvFile)
+        next(reader)
+
+        # Read opening times
+        row = next(reader)  # Move to open times
+        Schedule.OPEN_HR = int(row[0])
+        Schedule.OPEN_MN = int(row[1])
+
+        # Read closing times
+        row = next(reader)  # Move to close times
+        Schedule.CLOSE_HR = int(row[0])
+        Schedule.CLOSE_MN = int(row[1])
+    # Close csv file to free up memory
+    csvFile.close()
+
     return Schedule.CSV_SUCCESS
 

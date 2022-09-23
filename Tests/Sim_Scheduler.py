@@ -51,6 +51,8 @@ def mainSimSchedule():
     print(Schedule.INVALID_DOW_ARRAY)
     print(Schedule.INVALID_DATE_ARRAY)
     print(Schedule.VALID_OVERRIDE_DATE_ARRAY)
+    print(str(Schedule.OPEN_HR) + " hr " + str(Schedule.OPEN_MN) + " min to " +
+          str(Schedule.CLOSE_HR) + " hr " + str(Schedule.CLOSE_MN) + " min")
 
     # Print start message to terminal
     print("Beginning sim")
