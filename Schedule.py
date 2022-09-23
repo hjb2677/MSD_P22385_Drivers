@@ -75,6 +75,11 @@ INVALID_MONTH = -6
 # Invalid Code - Initialization of Scheduler
 INIT_CODE = -99
 
-
 # CSV Return Codes
 CSV_SUCCESS = 0
+
+CSV_INIT_CODE = -1000
+
+CSV_DATA_VALID = 1
+
+CSV_DATA_INVALID = -1
