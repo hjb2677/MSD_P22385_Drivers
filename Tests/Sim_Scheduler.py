@@ -11,6 +11,7 @@ All times are set to noon
 """
 
 # Imports
+import Schedule
 import Scheduler
 import datetime
 
@@ -41,6 +42,16 @@ Outputs  : none
 Simulates a period of time and checks scheduler. Prints validation code to a text file
 """
 def mainSimSchedule():
+    # Initialize schedule from CSV
+    Scheduler.InitializeSchedule(True)
+
+    # Prints schedule array for human validation
+    print(Schedule.INVALID_MONTH_ARRAY)
+    print(Schedule.INVALID_WEEK_ARRAY)
+    print(Schedule.INVALID_DOW_ARRAY)
+    print(Schedule.INVALID_DATE_ARRAY)
+    print(Schedule.VALID_OVERRIDE_DATE_ARRAY)
+
     # Print start message to terminal
     print("Beginning sim")
 
