@@ -55,7 +55,7 @@ Inputs   : integerData - an integer (int) representing a single piece of data, w
 Outputs  : return code - returns an error code or success code based upon the CSV data validity
 
 Examines integer data from a CSV file and validates it within provided bounds. Returns whether the data lies
-within the desires range. Wrapped within other functions for ease of use
+within the desires range.
 """
 def ValidateIntegerData(integerData, kind):
     # Evaluated whether the integer lies within [lower, upper] and returns a valid or invalid code. Ternary operator.
@@ -63,6 +63,26 @@ def ValidateIntegerData(integerData, kind):
     return Schedule.CSV_DATA_VALID \
         if LOWER_BOUNDS[kind.value] <= integerData <= UPPER_BOUNDS[kind.value] \
         else Schedule.CSV_DATA_INVALID
+
+
+"""
+Function : ValidateDateData
+Inputs   : year, month, day - the ISO calendar year, month, and day numbers, respectively
+Outputs  : return code - returns an error code or success code based upon the CSV data validity
+           kind - the DataKind enum value representing which, if any, ISO date part failed
+
+Examines integer data from a CSV file and validates it within provided bounds. Returns whether the data lies
+within the desires range. Calls ValidateIntegerData() for the year, month, and date
+"""
+def ValidateDateData(year, month, day):
+    if ValidateIntegerData(year, DataKind.YEAR) == Schedule.CSV_DATA_INVALID:  # If year is invalid
+        return Schedule.CSV_DATA_INVALID, DataKind.YEAR  # Return invalid code, indicate year is wrong
+    elif ValidateIntegerData(month, DataKind.MONTH) == Schedule.CSV_DATA_INVALID:  # If month is invalid
+        return Schedule.CSV_DATA_INVALID, DataKind.MONTH  # Return invalid code, indicate month is wrong
+    elif ValidateIntegerData(day, DataKind.DAY) == Schedule.CSV_DATA_INVALID:  # If day is invalid
+        return Schedule.CSV_DATA_INVALID, DataKind.DAY  # Return invalid code, indicate day is wrong
+    else:  # No invalid codes detected, given date is ISO valid
+        return Schedule.CSV_DATA_VALID, None  # Return valid code, indicate that nothing was wrong
 
 
 """
@@ -89,6 +109,7 @@ Returns a success or error code
 def InitializeSchedule(simcode=False):
     lineNumber = 2  # Represents the current line of the file. 1 indexed. Initialized to 2, since line 1 is headers
     returnCode = Schedule.CSV_INIT_CODE  # Represents the return value CSV data validation
+    errorKind = None  # Holds which kind of data was incorrect in the CSV. Use only for dates.
 
     # Sim_Scheduler.py requires a different path than the driver. This handles the simulation code to set the path
     # correctly
@@ -99,22 +120,36 @@ def InitializeSchedule(simcode=False):
 
     # Read Invalid_Dates.csv into INVALID_DATE_ARRAY
     with open(csvPath + "Invalid_Dates.csv", newline="") as csvFile:  # Open csv file with invalid dates
-        # Initialize the reader and skip column header line (first line)
+        # Initialize the reader, skip column header line (first line), and reset line count to 1
         reader = csv.reader(csvFile)
         next(reader)
+        lineNumber = 1
 
         for row in reader:  # Iterate through all rows with data and store the data into the correct array
+            lineNumber += 1  # Increment line number to current line
+            # Validate date entry on this row
+            (returnCode, errorKind) = ValidateDateData(int(row[0]), int(row[1]), int(row[2]))
+            if returnCode != Schedule.CSV_DATA_VALID:  # If bad date, throw an error message and exit
+                PrintTerminalValidationError(returnCode, lineNumber, "Invalid_Dates.csv", errorKind)
+                return returnCode
             Schedule.INVALID_DATE_ARRAY.append(row[0] + "-" + row[1] + "-" + row[2])
     # Close csv file to free up memory
     csvFile.close()
 
     # Read Override_Dates.csv into VALID_OVERRIDE_DATE_ARRAY
     with open(csvPath + "Override_Dates.csv", newline="") as csvFile:  # Open csv file with valid override dates
-        # Initialize the reader and skip column header line (first line)
+        # Initialize the reader, skip column header line (first line), and reset line count to 1
         reader = csv.reader(csvFile)
         next(reader)
+        lineNumber = 1
 
         for row in reader:  # Iterate through all rows with data and store the data into the correct array
+            lineNumber += 1  # Increment line number to current line
+            # Validate date entry on this row
+            (returnCode, errorKind) = ValidateDateData(int(row[0]), int(row[1]), int(row[2]))
+            if returnCode != Schedule.CSV_DATA_VALID:  # If bad date, throw an error message and exit
+                PrintTerminalValidationError(returnCode, lineNumber, "Override_Dates.csv", errorKind)
+                return returnCode
             Schedule.VALID_OVERRIDE_DATE_ARRAY.append(row[0] + "-" + row[1] + "-" + row[2])
     # Close csv file to free up memory
     csvFile.close()
