@@ -13,6 +13,7 @@ All times are set to noon
 # Imports
 import Schedule
 import Scheduler
+import SchedulingInterface
 import datetime
 
 # Defines
@@ -43,7 +44,7 @@ Simulates a period of time and checks scheduler. Prints validation code to a tex
 """
 def mainSimSchedule():
     # Initialize schedule from CSV
-    Scheduler.InitializeSchedule(True)
+    SchedulingInterface.InitializeSchedule(True)
 
     # Prints schedule array for human validation
     print(Schedule.INVALID_MONTH_ARRAY)

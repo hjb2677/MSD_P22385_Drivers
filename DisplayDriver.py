@@ -16,6 +16,7 @@ import ErrorReporter
 import HallMonitor
 import Schedule
 import Scheduler
+import SchedulingInterface
 import DriverFlowCodes
 import ErrorCodes
 
@@ -59,7 +60,7 @@ def main():
     # =============================================
     #                   CSV
     # =============================================
-    errorCode = Scheduler.InitializeSchedule()
+    errorCode = SchedulingInterface.InitializeSchedule()
     if errorCode != Schedule.CSV_SUCCESS:  # If CSV encountered an error
         return -1  # Exit program
 
