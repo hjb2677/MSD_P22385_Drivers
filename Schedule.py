@@ -10,29 +10,23 @@ CRITICAL NOTE - CHECK ISO FORMAT BEFORE ADJUSTING
 """
 
 # Invalid DOWs - ISO standard days of the week (1 = mon, 7 = sun) where the ride will not run
-# Set as : saturday & sunday
-INVALID_DOW_ARRAY = [6, 7]
+INVALID_DOW_ARRAY = []
 
 # Invalid Dates - ISO formatted dates "YYYY-MM-DD" that the display will not run for. This overrides all other functions
-# January 1st, 2000 is shown as an example, along with 2023 labor day, Christmas's, and New Years
-INVALID_DATE_ARRAY = ["2000-01-01", "2023-09-04", "2023-12-25", "2024-12-25", "2023-01-01", "2024-01-01", "2025-01-01"]
+INVALID_DATE_ARRAY = []
 
 # Valid Override Dates - ISO formatted dates "YYYY-MM-DD" that the display will run for regardless of the month,
 # date, DOW, etc. Overrides all date-based checks. Useful for things like Imagine RIT or events that fall on invalid
 # DOWs or months
-# 2023 Imagine RIT dates are added for example
-VALID_OVERRIDE_DATE_ARRAY = ["2023-04-23"]
+VALID_OVERRIDE_DATE_ARRAY = []
 
 # Invalid Weeks - Datetime library week numbers that the ride is not supposed to run during
 # Stored as 1-52 or 53 for the 52/53 weeks a year, along with their respective year.
 # See documentation for ISO format
-# The first and second weeks of 2010 is stored as an example
-# Spring break 2023 and 2024 are included
-INVALID_WEEK_ARRAY = [(2010, 1), (2010, 2), (2023, 11), (2024, 11)]
+INVALID_WEEK_ARRAY = []
 
 # Invalid Months - Datetime library month numbers that the ride is not supposed to run during
-# Set to OFF during June & July
-INVALID_MONTH_ARRAY = [6, 7]
+INVALID_MONTH_ARRAY = []
 
 # Open and Close times:
 # minutes (0-59)
@@ -80,3 +74,7 @@ INVALID_MONTH = -6
 
 # Invalid Code - Initialization of Scheduler
 INIT_CODE = -99
+
+
+# CSV Return Codes
+CSV_SUCCESS = 0

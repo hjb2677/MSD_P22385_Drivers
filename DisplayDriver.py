@@ -56,6 +56,13 @@ def main():
 
     # POST CODE HERE
 
+    # =============================================
+    #                   CSV
+    # =============================================
+    errorCode = Scheduler.InitializeSchedule()
+    if errorCode != Schedule.CSV_SUCCESS:  # If CSV encountered an error
+        return -1  # Exit program
+
     # MAIN LOOP
     # Loops through a switch statement that enters each
     # driver control system as directed by the previous
