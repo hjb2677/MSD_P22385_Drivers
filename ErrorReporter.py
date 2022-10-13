@@ -60,7 +60,7 @@ def EmailErrorToClient(errorCode, timestamp):
     emailServer.login(smtp_user, smtp_password)
 
     # Notify customer of the issue
-    emailServer.sendmail(smtp_user, "hjb2677@g.rit.edu", msg.as_string())
+    emailServer.sendmail(smtp_user, ErrorReport.EMAIL_DESTINATION_ADDRESS, msg.as_string())
 
     # Close the smtp server connection
     emailServer.quit()
