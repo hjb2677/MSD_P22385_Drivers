@@ -1,10 +1,12 @@
 import ErrorReporter
 import ErrorReport
 import ErrorCodes
+import Scheduler
 
 def SimEmailReport():
     print("Simulating error")
-    ErrorReporter.EmailErrorToClient(ErrorReport.EMAIL_REPORTER_TEST_ERROR)
+    timestamp = Scheduler.GetTimestamp()
+    ErrorReporter.EmailErrorToClient(ErrorReport.EMAIL_REPORTER_TEST_ERROR, timestamp)
     print("Simulation done")
 
 
