@@ -117,7 +117,6 @@ def ValidateTime(timeOfDay, todaysDate):
     for overrideDate in Schedule.VALID_OVERRIDE_DATE_ARRAY:
         if currentDate == overrideDate:  # Override date detected, set flag high to skip date validation
             validOverrideFlag = True
-
     # Validate the date ONLY if the current date is not an override date
     if not validOverrideFlag:
         # Validate date
@@ -145,12 +144,12 @@ def ValidateTime(timeOfDay, todaysDate):
     # Validate time of day (TOD)
     if Schedule.OPEN_HR < currentHour < Schedule.CLOSE_HR:
         # TOD is within valid hours, no need to check minutes
-        return Schedule.VALID_TIME
+        return Schedule.VALID_RUN_TIME
     elif Schedule.OPEN_HR == currentHour:
         # If hour matches opening hour, check minutes
         if Schedule.OPEN_MN <= currentMin:
             # Time is past opening, valid
-            return Schedule.VALID_TIME
+            return Schedule.VALID_RUN_TIME
         else:
             # Time is not at opening, invalid
             return Schedule.INVALID_MINUTE
@@ -158,7 +157,7 @@ def ValidateTime(timeOfDay, todaysDate):
         # If hour matches closing hour, check minutes
         if Schedule.CLOSE_MN >= currentMin:
             # Time is prior to closing, valid
-            return Schedule.VALID_TIME
+            return Schedule.VALID_RUN_TIME
         else:
             # Time is after closing, invalid
             return Schedule.INVALID_MINUTE
