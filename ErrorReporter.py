@@ -16,9 +16,11 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 
-def ErrorReporterDriver():
-    errorCode = ErrorReport.EMAIL_REPORTER_TEST_ERROR
+def ErrorReporterDriver(errorCode, previousError):
     timestamp = Scheduler.GetTimestamp()
+    if errorCode == previousError:
+        # Repeat error occurred, something is wrong with a nominal error, make it fatal
+        errorCode = ErrorCodes.FATAL_REPEATED_BACK2BACK_NOM_ERR
     EmailErrorToClient(errorCode, timestamp)
     return ErrorReport.ERROR_REPORTER_CONTINUE_DRIVER
 
@@ -49,7 +51,9 @@ def EmailErrorToClient(errorCode, timestamp):
     # Actual message goes here
     msg.attach(MIMEText("\nThe Raspberry Pi in the TPE Display has detected an error." +
                         "\nERROR CODE - " + str(errorCode) + " at " + timestamp +
-                        "\nRefer to reference manual for causes, debugging, etc.", "plain"))
+                        "\nRefer to reference manual for causes, debugging, etc." +
+                        "\nFatal (1 = yes, 0 = no) - " +
+                        ("1" if str(errorCode[1]) == "-" else "0") , "plain"))
 
     # Initialize smtp server
     emailServer = smtplib.SMTP(server, port)

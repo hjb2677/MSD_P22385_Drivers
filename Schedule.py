@@ -38,7 +38,7 @@ CLOSE_MN = 0
 
 # Fetch Period - time (s) between fetching timestamp in Scheduler
 #      Currently set to 5 min = 300 s
-FETCH_TIMESTAMP_DELAY_S = 300
+FETCH_TIMESTAMP_DELAY_S = 3
 
 # Fetch Period TEST - time (s) between fetching timestamp in scheduler
 #      when performing the scheduler test
@@ -48,7 +48,7 @@ TEST_FETCH_TIMESTAMP_DELAY_S = 5
 
 # Scheduler Validation codes
 
-# Valid Time - given time of day is within operating time
+# Valid Time - given time of day is within operating time - DEPRECATED
 VALID_TIME = 0
 
 # Valid Time - Coaster should be running at this time, as scheduled by TPE
